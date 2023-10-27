@@ -1,7 +1,7 @@
 apiVersion: configsync.gke.io/v1beta1
 kind: RootSync
 metadata:
-  name: csi-driver
+  name: csi-driver-git
   namespace: config-management-system
 spec:
   sourceFormat: unstructured
