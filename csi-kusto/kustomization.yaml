@@ -1,2 +1,7 @@
-resources:
-
+helmGlobals:
+  chartHome: ./helm-charts
+helmCharts:
+- name: secrets-store-csi-driver
+  releaseName: secrets-store-csi-driver
+  namespace: secrets-store-csi-driver
+  includeCRDs: true
