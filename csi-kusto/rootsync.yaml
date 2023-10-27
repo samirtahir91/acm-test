@@ -7,7 +7,7 @@ spec:
   sourceFormat: unstructured
   sourceType: oci
   oci:
-    image: europe-west2-docker.pkg.dev/playpen-746314/csi-kusto/csi-driver:v1
+    image: europe-west2-docker.pkg.dev/<project>/csi-kusto/csi-driver:v1
     dir: .
     auth: gcpserviceaccount
-    gcpServiceAccountEmail: gar-reader@playpen-746314.iam.gserviceaccount.com
+    gcpServiceAccountEmail: gar-reader@<project>.iam.gserviceaccount.com
