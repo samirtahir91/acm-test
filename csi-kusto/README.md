@@ -6,5 +6,6 @@ tar -cf csi.tar helm-charts kustomization.yaml
 
 crane append -f csi.tar -t ${AR_REGION}-docker.pkg.dev/${PROJECT_ID}/csi-kusto/csi-driver:v1
 
+# Edit the rootsync for PROJECT_ID and AR_REGION
 kubectl apply -f rootsync-oci.yaml
 ```
