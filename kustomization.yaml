@@ -1,2 +1,3 @@
 resources:
 - namespace.yaml
+- ns2.yaml
