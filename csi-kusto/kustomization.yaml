@@ -5,3 +5,6 @@ helmCharts:
   releaseName: secrets-store-csi-driver
   namespace: secrets-store-csi-driver
   includeCRDs: true
+
+resources:
+- namespace.yaml
