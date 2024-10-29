@@ -9,6 +9,10 @@ patches:
     - op: replace
       path: /metadata/name
       value: tenant-abc123
+    # ServiceAccount
+    - op: replace
+      path: /spec/resources/0/rawItems/0/metadata/name
+      value: ksa-abc123
     # ResourceQuota
     - op: add
       path: /spec/resourceQuotas
@@ -17,6 +21,7 @@ patches:
         items: 
           - hard:
               pods: "15"
+
 
 - target:
     kind: Namespace

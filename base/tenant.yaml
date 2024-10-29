@@ -12,3 +12,9 @@ spec:
       - Ingress
       - Egress
       podSelector: {}
+  resources:
+    - rawItems:
+        - apiVersion: v1
+          kind: ServiceAccount
+          metadata:
+            name: replace-me
