@@ -9,15 +9,33 @@ patches:
     - op: replace
       path: /metadata/name
       value: tenant-abc123
-    # Rolebinding
+
+    # Rolebindings
     - op: add
-      path: /spec/additionalRoleBindings
+      path: /spec/additionalRoleBindings/-
       value:
-      - clusterRoleName: dev-cluster-developers
+        clusterRoleName: dev-cluster-developers
         subjects:
         - apiGroup: rbac.authorization.k8s.io
           kind: Group
           name: tenant-abc123-developers
+    - op: add
+      path: /spec/additionalRoleBindings/-
+      value:
+        clusterRoleName: dev-cluster-maintainers
+        subjects:
+        - apiGroup: rbac.authorization.k8s.io
+          kind: Group
+          name: tenant-abc123-maintainers
+    - op: add
+      path: /spec/additionalRoleBindings/-
+      value:
+        clusterRoleName: dev-cluster-pim
+        subjects:
+        - apiGroup: rbac.authorization.k8s.io
+          kind: Group
+          name: tenant-abc123-pim
+
     # ResourceQuota
     - op: add
       path: /spec/resourceQuotas
@@ -25,7 +43,11 @@ patches:
         scope: Namespace
         items: 
           - hard:
-              pods: "15"
+              pods: "5"
+              requests.cpu: "1"
+              limits.cpu: "1"
+              requests.memory: "1Gi"
+              limits.memory: "1Gi"     
 
 - target:
     kind: TenantResource

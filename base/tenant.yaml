@@ -6,6 +6,7 @@ spec:
   owners:
   - name: system:serviceaccount:config-management-system:root-reconciler-namespaces
     kind: ServiceAccount
+  additionalRoleBindings: []
   networkPolicies:
     items:
     - policyTypes:
