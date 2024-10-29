@@ -15,7 +15,7 @@ patches:
         scope: Namespace
         items: 
           - hard:
-              pods: "1"
+              pods: "15"
 
 - target:
     kind: Namespace
