@@ -9,7 +9,9 @@ patches:
     - op: replace
       path: /metadata/name
       value: tenant-abc123
-
+    - op: add
+      path: /spec/resourceQuotas/items/0/hard/pods
+      value: "1"
 
 - target:
     kind: Namespace
