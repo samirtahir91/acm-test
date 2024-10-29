@@ -1,0 +1,13 @@
+apiVersion: capsule.clastix.io/v1beta2
+kind: Tenant
+metadata:
+  name: team-a
+spec:
+  owners:
+  - name: system:serviceaccount:config-management-system:root-reconciler-namespaces
+    kind: ServiceAccount
+  resourceQuotas:
+    scope: Namespace
+    items:
+    - hard:
+        pods: "10"

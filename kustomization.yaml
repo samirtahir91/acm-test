@@ -1,3 +1,3 @@
 resources:
+- tenant.yaml
 - namespace.yaml
-- ns2.yaml

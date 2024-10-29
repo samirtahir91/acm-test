@@ -8,7 +8,7 @@ spec:
   git:
     repo: https://github.com/samirtahir91/acm-test
     revision: "HEAD"
-    branch: "main"
+    branch: "capsule"
     dir: "."
     auth: token
     secretRef:
