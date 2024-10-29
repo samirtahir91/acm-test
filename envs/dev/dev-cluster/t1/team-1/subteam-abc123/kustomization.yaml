@@ -9,6 +9,15 @@ patches:
     - op: replace
       path: /metadata/name
       value: tenant-abc123
+    # Rolebinding
+    - op: add
+      path: /spec/additionalRoleBindings
+      value:
+      - clusterRoleName: dev-cluster-developers
+        subjects:
+        - apiGroup: rbac.authorization.k8s.io
+          kind: Group
+          name: tenant-abc123-developers
     # ResourceQuota
     - op: add
       path: /spec/resourceQuotas
