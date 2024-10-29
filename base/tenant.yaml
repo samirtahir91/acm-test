@@ -1,7 +1,7 @@
 apiVersion: capsule.clastix.io/v1beta2
 kind: Tenant
 metadata:
-  name: team-a
+  name: replace-me
 spec:
   owners:
   - name: system:serviceaccount:config-management-system:root-reconciler-namespaces
@@ -11,3 +11,9 @@ spec:
     items:
     - hard:
         pods: "10"
+  networkPolicies:
+    items:
+    - policyTypes:
+      - Ingress
+      - Egress
+      podSelector: {}

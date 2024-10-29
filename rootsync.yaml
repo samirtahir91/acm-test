@@ -9,5 +9,5 @@ spec:
     repo: https://github.com/samirtahir91/acm-test
     revision: "HEAD"
     branch: "capsule"
-    dir: "."
+    dir: "./envs/dev/dev-cluster"
     auth: none

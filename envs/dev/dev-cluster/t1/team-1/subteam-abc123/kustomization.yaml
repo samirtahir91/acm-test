@@ -1,0 +1,27 @@
+resources:
+- ../../../../../../base
+
+patches:
+
+- target:
+    kind: Tenant
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: tenant-abc123
+    - op: add
+      path: /spec/resourceQuotas/items/0/hard/pods
+      value: 1
+
+- target:
+    kind: Namespace
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ns-abc123
+    - op: replace
+      path: /metadata/annotations/config.kubernetes.io~1depends-on
+      value: capsule.clastix.io/Tenant/tenant-abc123
+    - op: replace
+      path: /metadata/labels/capsule.clastix.io~1tenant
+      value: tenant-abc123
