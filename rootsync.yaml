@@ -10,6 +10,4 @@ spec:
     revision: "HEAD"
     branch: "capsule"
     dir: "."
-    auth: token
-    secretRef:
-      name: github-pat
+    auth: none

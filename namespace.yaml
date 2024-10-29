@@ -4,3 +4,5 @@ metadata:
   name: ns-123123
   labels:
     capsule.clastix.io/tenant: team-a
+  annotations:
+    config.kubernetes.io/depends-on: capsule.clastix.io/Tenant/team-a
