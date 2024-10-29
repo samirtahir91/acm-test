@@ -10,8 +10,12 @@ patches:
       path: /metadata/name
       value: tenant-abc123
     - op: add
-      path: /spec/resourceQuotas/items/0/hard/pods
-      value: "1"
+      path: /spec/resourceQuotas
+      value:
+        scope: Namespace
+        items: 
+          - hard:
+              pods: "1"
 
 - target:
     kind: Namespace
