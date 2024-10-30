@@ -69,8 +69,8 @@ spec:
             name: rsq-caas-med
           spec:
             hard:
-              pods: "10"
-              requests.cpu: "2"
-              limits.cpu: "2"
-              requests.memory: "2Gi"
-              limits.memory: "2Gi"     
+              pods: "20"
+              requests.cpu: "5"
+              limits.cpu: "5"
+              requests.memory: "10Gi"
+              limits.memory: "10Gi"     
