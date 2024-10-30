@@ -57,7 +57,7 @@ patches:
           name: tenant-abc123-pim
 
     # ResourceQuota
-    # This could be moved to global tenant resources - label tenant "quota=xxxx"
+    # This is moved to global tenant resources - label tenant "quota=xxxx"
     # - To map predefined quotas to tenants
     # If custom fine graned values, better to patch like this:
     #- op: add
@@ -71,19 +71,3 @@ patches:
     #          limits.cpu: "1"
     #          requests.memory: "1Gi"
     #          limits.memory: "1Gi"     
-
-# Only required if wanting to use tenant resources, allows patching names
-#- target:
-#    kind: TenantResource
-#  patch: |-
-#    - op: replace
-#      path: /metadata/name
-#      value: tenant-resources-abc123
-#    - op: replace
-#      path: /metadata/namespace
-#      value: ns-abc123
-#    # ServiceAccount
-#    - op: replace
-#      path: /spec/resources/0/rawItems/0/metadata/name
-#      value: ksa-abc123
-
