@@ -22,4 +22,4 @@ spec:
         - apiVersion: v1
           kind: ServiceAccount
           metadata:
-            name: ksacaas
+            name: ksa-caas
