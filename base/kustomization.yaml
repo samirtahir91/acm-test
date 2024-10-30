@@ -1,7 +1,7 @@
 resources:
 - tenant.yaml
 - namespace.yaml
-- serviceaccount.yaml
+# - serviceaccount.yaml
 # Use global tenant resource, 1 per cluster, sync resources from source namespace to tenant namesapces
 # Less objects for ACM, resource name then has to be generic.
 - tenant-global-resource.yaml

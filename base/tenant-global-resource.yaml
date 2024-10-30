@@ -9,10 +9,17 @@ spec:
       tenant: caas
   resyncPeriod: 60s
   resources:
-    - namespacedItems:
+    # Use namespacedItems to sync objects from a source ns to tenant ns
+    #- namespacedItems:
+    #    - apiVersion: v1
+    #      kind: ServiceAccount
+    #      namespace: capsule-system
+    #      selector: # select kinds in source ns matching labels
+    #        matchLabels:
+    #          tenant: caas
+    # Use rawItems to sync direct from this manifest to tenant namespaces
+    - rawItems:
         - apiVersion: v1
           kind: ServiceAccount
-          namespace: capsule-system
-          selector:
-            matchLabels:
-              tenant: caas
+          metadata:
+            name: ksacaas
