@@ -20,11 +20,11 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
     --create-namespace
   ```
 
-Apply the RootSyncs:
-```sh
-kubectl apply -f namespace-rootsync.yaml
-kubectl apply - global-tenant-resourcs-rootsync.yaml
-```
+- Apply the RootSyncs:
+  ```sh
+  kubectl apply -f namespace-rootsync.yaml
+  kubectl apply - global-tenant-resourcs-rootsync.yaml
+  ```
 
 ## Setup
 - Config Sync will act as the robot GitOps account, vending Tenants and Namespaces (1:1 relationship), and `GlobalTenantResources`
