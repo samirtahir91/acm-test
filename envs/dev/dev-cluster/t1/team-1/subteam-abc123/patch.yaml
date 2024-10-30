@@ -9,5 +9,5 @@ metadata:
     tier-1: team-1
     cluster: dev-cluster
     env: dev
-    quota: low
+    quota: med
     global-resource: stable

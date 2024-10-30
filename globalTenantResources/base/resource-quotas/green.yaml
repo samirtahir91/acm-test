@@ -48,4 +48,29 @@ spec:
               requests.cpu: "2"
               limits.cpu: "2"
               requests.memory: "2Gi"
+              limits.memory: "2Gi"
+---
+apiVersion: capsule.clastix.io/v1beta2
+kind: GlobalTenantResource 
+metadata:
+  name: gts-caas-rsq-med-green
+  labels:
+    colour: green
+spec:
+  tenantSelector:
+    matchLabels:
+      quota: med
+  resyncPeriod: 60s
+  resources:
+    - rawItems:
+        - apiVersion: v1
+          kind: ResourceQuota
+          metadata:
+            name: rsq-caas-med
+          spec:
+            hard:
+              pods: "10"
+              requests.cpu: "2"
+              limits.cpu: "2"
+              requests.memory: "2Gi"
               limits.memory: "2Gi"     
