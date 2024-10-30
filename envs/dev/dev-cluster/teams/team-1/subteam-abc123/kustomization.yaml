@@ -6,21 +6,7 @@ patches:
 # Patch global labels and annotations
 - path: patch.yaml
   target:
-    kind: (Tenant|Namespace)
-
-# Patch namespace
-- target:
-    kind: Namespace
-  patch: |-
-    - op: replace
-      path: /metadata/name
-      value: ns-abc123
-    - op: replace
-      path: /metadata/annotations/config.kubernetes.io~1depends-on
-      value: capsule.clastix.io/Tenant/tenant-abc123
-    - op: replace
-      path: /metadata/labels/capsule.clastix.io~1tenant
-      value: tenant-abc123
+    kind: Tenant
 
 # Patch tenant
 - target:

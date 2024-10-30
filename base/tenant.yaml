@@ -6,8 +6,8 @@ metadata:
     tenant: caas
 spec:
   owners:
-  - name: system:serviceaccount:config-management-system:root-reconciler-namespaces
-    kind: ServiceAccount
+  - name: alice
+    kind: User
   namespaceOptions:
     forbiddenLabels:
       denied:
