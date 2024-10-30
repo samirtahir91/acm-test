@@ -10,6 +10,7 @@ spec:
     kind: User
     clusterRoles:
       - view
+      - capsule-namespace-deleter 
   namespaceOptions:
     forbiddenLabels:
       denied:
