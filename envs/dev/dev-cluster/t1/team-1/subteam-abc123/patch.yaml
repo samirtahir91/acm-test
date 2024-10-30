@@ -1,16 +1,13 @@
-apiVersion: capsule.clastix.io/v1beta2
-kind: Tenant
+apiVersion: v1 # ignored
+kind: Not-Important # ignored
 metadata:
-  name: not-important
-spec:
-  namespaceOptions:
-    additionalMetadata:
-      annotations:
-        owner: foo@bar.com
-      labels:
-        tier-2: subteam-abc123
-        tier-1: team-1
-        cluster: dev-cluster
-        env: dev
-        quota: default
-        global-resource: stable
+  name: not-importnant # ignored
+  annotations:
+    owner: foo@bar.com
+  labels:
+    tier-2: subteam-abc123
+    tier-1: team-1
+    cluster: dev-cluster
+    env: dev
+    quota: low
+    global-resource: stable

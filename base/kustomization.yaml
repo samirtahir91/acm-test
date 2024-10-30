@@ -4,6 +4,7 @@ resources:
 # - serviceaccount.yaml
 # Use global tenant resource, 1 per cluster, sync resources from source namespace to tenant namesapces
 # Less objects for ACM, resource name then has to be generic.
-- tenant-global-resource.yaml
+- tenant-global-resource-blue.yaml
+- tenant-global-resource-green.yaml
 #  Use if you want to patch resource names per ns, 1 per ns - more objects for acm
 # - tenant-resource.yaml

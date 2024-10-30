@@ -1,0 +1,73 @@
+# This can be synced in a seperate rootsync, i.e. with the capsule system itself
+apiVersion: capsule.clastix.io/v1beta2
+kind: GlobalTenantResource 
+metadata:
+  name: gts-caas-ksa-green
+spec:
+  tenantSelector:
+    matchLabels:
+      global-resource: beta
+  resyncPeriod: 60s
+  resources:
+    # Use namespacedItems to sync objects from a source ns to tenant ns
+    #- namespacedItems:
+    #    - apiVersion: v1
+    #      kind: ServiceAccount
+    #      namespace: capsule-system
+    #      selector: # select kinds in source ns matching labels
+    #        matchLabels:
+    #          tenant: caas
+    # Use rawItems to sync direct from this manifest to tenant namespaces
+    - rawItems:
+        - apiVersion: v1
+          kind: ServiceAccount
+          metadata:
+            name: ksa-caas
+---
+apiVersion: capsule.clastix.io/v1beta2
+kind: GlobalTenantResource 
+metadata:
+  name: gts-caas-rsq-default-green
+spec:
+  tenantSelector:
+    matchLabels:
+      global-resource: beta
+      quota: default
+  resyncPeriod: 60s
+  resources:
+    - rawItems:
+        - apiVersion: v1
+          kind: ResourceQuota
+          metadata:
+            name: rsq-caas-default
+          spec:
+            hard:
+              pods: "1"
+              requests.cpu: "1"
+              limits.cpu: "1"
+              requests.memory: "1Gi"
+              limits.memory: "1Gi"     
+---
+apiVersion: capsule.clastix.io/v1beta2
+kind: GlobalTenantResource 
+metadata:
+  name: gts-caas-rsq-low-green
+spec:
+  tenantSelector:
+    matchLabels:
+      global-resource: beta
+      quota: low
+  resyncPeriod: 60s
+  resources:
+    - rawItems:
+        - apiVersion: v1
+          kind: ResourceQuota
+          metadata:
+            name: rsq-caas-low
+          spec:
+            hard:
+              pods: "10"
+              requests.cpu: "2"
+              limits.cpu: "2"
+              requests.memory: "2Gi"
+              limits.memory: "2Gi"     

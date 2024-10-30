@@ -3,11 +3,26 @@ resources:
 
 patches:
 
-patches:
+# Patch global labels and annotations
 - path: patch.yaml
   target:
-    kind: Tenant
+    kind: (Tenant|Namespace)
 
+# Patch namespace
+- target:
+    kind: Namespace
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ns-abc123
+    - op: replace
+      path: /metadata/annotations/config.kubernetes.io~1depends-on
+      value: capsule.clastix.io/Tenant/tenant-abc123
+    - op: replace
+      path: /metadata/labels/capsule.clastix.io~1tenant
+      value: tenant-abc123
+
+# Patch tenant
 - target:
     kind: Tenant
   patch: |-
@@ -45,17 +60,17 @@ patches:
     # This could be moved to global tenant resources - label tenant "quota=xxxx"
     # - To map predefined quotas to tenants
     # If custom fine graned values, better to patch like this:
-    - op: add
-      path: /spec/resourceQuotas
-      value:
-        scope: Namespace
-        items: 
-          - hard:
-              pods: "5"
-              requests.cpu: "1"
-              limits.cpu: "1"
-              requests.memory: "1Gi"
-              limits.memory: "1Gi"     
+    #- op: add
+    #  path: /spec/resourceQuotas
+    #  value:
+    #    scope: Namespace
+    #    items: 
+    #      - hard:
+    #          pods: "5"
+    #          requests.cpu: "1"
+    #          limits.cpu: "1"
+    #          requests.memory: "1Gi"
+    #          limits.memory: "1Gi"     
 
 # Only required if wanting to use tenant resources, allows patching names
 #- target:
@@ -72,15 +87,3 @@ patches:
 #      path: /spec/resources/0/rawItems/0/metadata/name
 #      value: ksa-abc123
 
-- target:
-    kind: Namespace
-  patch: |-
-    - op: replace
-      path: /metadata/name
-      value: ns-abc123
-    - op: replace
-      path: /metadata/annotations/config.kubernetes.io~1depends-on
-      value: capsule.clastix.io/Tenant/tenant-abc123
-    - op: replace
-      path: /metadata/labels/capsule.clastix.io~1tenant
-      value: tenant-abc123
