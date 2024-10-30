@@ -8,6 +8,8 @@ spec:
   owners:
   - name: alice
     kind: User
+    clusterRoles:
+      - view
   namespaceOptions:
     forbiddenLabels:
       denied:
