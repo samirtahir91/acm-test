@@ -16,6 +16,16 @@ patches:
       path: /metadata/name
       value: tenant-abc123
 
+    # Owner group
+    - op: replace
+      path: /spec/owners/0/name
+      value: tenant-abc123-maintainers@mydomain.dev
+
+    # Owner group cluster role
+    - op: add
+      path: /spec/owners/0/clusterRoles/-
+      value: dev-cluster-maintainers
+
     # Rolebindings
     - op: add
       path: /spec/additionalRoleBindings/-
@@ -24,7 +34,7 @@ patches:
         subjects:
         - apiGroup: rbac.authorization.k8s.io
           kind: Group
-          name: tenant-abc123-developers
+          name: tenant-abc123-developers@mydomain.dev
     - op: add
       path: /spec/additionalRoleBindings/-
       value:
@@ -32,7 +42,7 @@ patches:
         subjects:
         - apiGroup: rbac.authorization.k8s.io
           kind: Group
-          name: tenant-abc123-maintainers
+          name: tenant-abc123-maintainers@mydomain.dev
     - op: add
       path: /spec/additionalRoleBindings/-
       value:
@@ -40,7 +50,7 @@ patches:
         subjects:
         - apiGroup: rbac.authorization.k8s.io
           kind: Group
-          name: tenant-abc123-pim
+          name: tenant-abc123-pim@mydomain.dev
 
     # ResourceQuota
     # This is moved to global tenant resources - label tenant "quota=xxxx"

@@ -6,11 +6,11 @@ metadata:
     tenant: caas
 spec:
   owners:
-  - name: alice
-    kind: User
+  - name: replace-me # can create namesapces
+    kind: Group
     clusterRoles:
-      - view
-      - capsule-namespace-deleter 
+      - view  # can only view in namespace
+      - capsule-namespace-deleter  # can delete namesapce owned by tenant
   namespaceOptions:
     forbiddenLabels:
       denied:
