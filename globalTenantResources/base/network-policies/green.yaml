@@ -19,3 +19,15 @@ spec:
             policyTypes:
             - Ingress
             - Egress 
+        - apiVersion: networking.k8s.io/v1
+          kind: NetworkPolicy
+          metadata:
+            name: allow-egress-to-gcp-metadata
+          spec:
+            podSelector: {}
+            policyTypes:
+            - Egress
+            egress:
+            - to:
+              - ipBlock:
+                  cidr: 169.254.169.254/32
