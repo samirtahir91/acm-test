@@ -19,6 +19,7 @@ spec:
           - foo.acme.net
       deniedRegex: .*.acme.net
   additionalRoleBindings: []
+  # these could be moved to a glolbal tenant resource
   networkPolicies:
     items:
     - policyTypes:
