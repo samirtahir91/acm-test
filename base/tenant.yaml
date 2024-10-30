@@ -2,6 +2,8 @@ apiVersion: capsule.clastix.io/v1beta2
 kind: Tenant
 metadata:
   name: replace-me
+  labels:
+    tenant: caas
 spec:
   owners:
   - name: system:serviceaccount:config-management-system:root-reconciler-namespaces

@@ -1,4 +1,5 @@
 resources:
 - tenant.yaml
 - namespace.yaml
-- tenantresource.yaml
+- tenant-global-resource.yaml
+# - tenant-resource.yaml

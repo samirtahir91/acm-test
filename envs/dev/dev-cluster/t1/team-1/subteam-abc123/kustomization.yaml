@@ -50,6 +50,17 @@ patches:
               limits.memory: "1Gi"     
 
 - target:
+    kind: GlobalTenantResource
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: tenant-resources-abc123
+    # ServiceAccount
+    - op: replace
+      path: /spec/resources/0/namespacedItems/0/namespace
+      value: ns-abc123
+
+- target:
     kind: TenantResource
   patch: |-
     - op: replace

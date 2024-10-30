@@ -1,0 +1,17 @@
+apiVersion: capsule.clastix.io/v1beta2
+kind: GlobalTenantResource 
+metadata:
+  name: replace-me
+spec:
+  tenantSelector:
+    matchLabels:
+      tenant: caas
+  resyncPeriod: 60s
+  resources:
+    - namespacedItems:
+        - apiVersion: v1
+          kind: ServiceAccount
+          namespace: replace-me
+          selector:
+            matchLabels:
+              tenant: caas
