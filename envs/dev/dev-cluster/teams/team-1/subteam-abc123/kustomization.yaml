@@ -19,7 +19,8 @@ patches:
     # Owner group
     - op: replace
       path: /spec/owners/0/name
-      value: tenant-abc123-maintainers@mydomain.dev
+      #value: tenant-abc123-maintainers@mydomain.dev
+      value: bob
 
     # Owner group cluster role
     - op: add
