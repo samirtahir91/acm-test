@@ -29,7 +29,7 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
 
 ## Scenario: I want to test a new Network Policy:
 - Add the new policy into the current beta (`globalTenantResources/base/network-policies/green.yaml`), 
-- Update my tenant label for `global-resources` in a test subteam `patch.yaml` to `beta`
+- Update the tenant label for `global-resources` in a test subteam `patch.yaml` to `beta`
 - Commit and push the changes, let Capsule sync, and observe the new Network Policy in the test tenants namespace.
 - Once satisfied with tests, roll out to all tenants
 - Simply switch the label on the cluster kustomization.yaml `globalTenantResources/envs/dev/dev-cluster/kustomization.yaml` for green to be stable, or copy the updated policy to the `blue.yaml` under `globalTenantResources/base/network-policies/`
