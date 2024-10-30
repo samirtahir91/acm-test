@@ -23,7 +23,7 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
 - Apply the RootSyncs:
   ```sh
   kubectl apply -f namespace-rootsync.yaml
-  kubectl apply - global-tenant-resourcs-rootsync.yaml
+  kubectl apply -f global-tenant-resourcs-rootsync.yaml
   ```
 
 ## Setup
