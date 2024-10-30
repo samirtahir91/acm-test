@@ -30,12 +30,12 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
 - Config Sync will act as the robot GitOps account, vending Tenants and Namespaces (1:1 relationship), and `GlobalTenantResources`
 - All `Tenants` and `Namespaces` are handled by a `namespace` `RootSync`
 - Each `Tenant` is owned by the `Config Sync` `namespace` `RootSync`
-- Capsule takes care of the rest - syncing `GlobalTenantResources` that match labels on `Tenant` objects
+- Capsule takes care of the rest - syncing `GlobalTenantResources` that match labels on `Tenant` objects, eliminating the overhead on Config Sync to reconcile all the Namespaced objects.
 - Role Bindings for custom access to namespaces are patched in the subteam `patch.yaml`
 - The sample files and layout can all be automated using scripts/apis/pipelines and hooked up to an IDP, essentially updating a git repo and letting ConfigSync and Capsule do the rest.
 - All global resources are handled by a separate `RootSync` `global-tenant-resourcs`
     - This syncs Service Account, Network Policies and Resource Quotas, you can add more custom objects.
-    - The global resources has been configured for a blue/green scenario:
+    - The global resources have been configured for a blue/green scenario:
     - All Tenants are vended with the label `global-resources: stable`
     - Each subset of resources under `globalTenantResources/base/` has a blue and green copy, admins can test new global resources by patching the `global-resources` label for blue/green `GlobalTenantResources` to be stable/beta in the cluster folder `kustomization.yaml`. i.e. `globalTenantResources/envs/dev/dev-cluster/kustomization.yaml`
     ```yaml
