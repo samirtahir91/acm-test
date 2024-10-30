@@ -8,6 +8,16 @@ spec:
   owners:
   - name: system:serviceaccount:config-management-system:root-reconciler-namespaces
     kind: ServiceAccount
+  namespaceOptions:
+    additionalMetadata:
+      annotations:
+        owner: replace-me
+      labels:
+        tier-2: replace-me
+    forbiddenLabels:
+      denied:
+          - foo.acme.net
+      deniedRegex: .*.acme.net
   additionalRoleBindings: []
   networkPolicies:
     items:
