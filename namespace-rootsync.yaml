@@ -8,6 +8,6 @@ spec:
   git:
     repo: https://github.com/samirtahir91/acm-test
     revision: "HEAD"
-    branch: "capsule"
+    branch: "capsul-selfserve"
     dir: "./envs/dev/dev-cluster"
     auth: none
