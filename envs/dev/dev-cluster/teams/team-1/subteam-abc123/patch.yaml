@@ -9,5 +9,5 @@ metadata:
     tier-1: team-1
     cluster: dev-cluster
     env: dev
-    quota: med
+    #quota: med # Handled at tenant level for self serve using aggregate
     global-resource: stable

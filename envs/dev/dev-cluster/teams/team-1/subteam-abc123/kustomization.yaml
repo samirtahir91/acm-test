@@ -20,7 +20,6 @@ patches:
     - op: replace
       path: /spec/owners/0/name
       value: tenant-abc123-maintainers@mydomain.dev
-      #value: bob
 
     # Owner group cluster role
     - op: add
@@ -57,14 +56,14 @@ patches:
     # This is moved to global tenant resources - label tenant "quota=xxxx"
     # - To map predefined quotas to tenants
     # If custom fine graned values, better to patch like this:
-    #- op: add
-    #  path: /spec/resourceQuotas
-    #  value:
-    #    scope: Namespace
-    #    items: 
-    #      - hard:
-    #          pods: "5"
-    #          requests.cpu: "1"
-    #          limits.cpu: "1"
-    #          requests.memory: "1Gi"
-    #          limits.memory: "1Gi"     
+    - op: add
+      path: /spec/resourceQuotas
+      value:
+        scope: Tenant
+        items: 
+          - hard:
+              pods: "5"
+              requests.cpu: "2"
+              limits.cpu: "2"
+              requests.memory: "5Gi"
+              limits.memory: "5Gi"     
