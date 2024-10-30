@@ -29,8 +29,8 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
 - Once satisfied with tests, roll out to all tenants
 - Simply switch the label on the cluster kustomization.yaml `globalTenantResources/envs/dev/dev-cluster/kustomization.yaml` for green to be stable, or copy the updated policy to the `blue.yaml` under `globalTenantResources/base/network-policies/`
 
-### ResourceQuotas scoping
-ResourceQuotas are scoped to tenant namespaces using the `quota` label in the subteam `patch.yaml` (patches the Tenant with quota label)
+### Resource Quota scoping
+Resource Quotas are scoped to tenant namespaces using the `quota` label in the subteam `patch.yaml` (patches the Tenant with quota label)
 
 The ResourceQuotas are maintained in `globalTenantResources/base/resource-quotas`, each having the tenantSelector to match Tenants for scoping, i.e.
 ```yaml
