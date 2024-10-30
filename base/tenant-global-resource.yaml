@@ -1,7 +1,7 @@
 apiVersion: capsule.clastix.io/v1beta2
 kind: GlobalTenantResource 
 metadata:
-  name: replace-me
+  name: global-caas-resources
 spec:
   tenantSelector:
     matchLabels:
@@ -11,7 +11,7 @@ spec:
     - namespacedItems:
         - apiVersion: v1
           kind: ServiceAccount
-          namespace: replace-me
+          namespace: capsule-system
           selector:
             matchLabels:
               tenant: caas
