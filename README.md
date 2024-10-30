@@ -57,7 +57,8 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
 - Update the tenant label for `global-resources` in a test subteam `patch.yaml` to `beta`
 - Commit and push the changes, let Capsule sync, and observe the new Network Policy in the test tenants namespace.
 - Once satisfied with tests, roll out to all tenants
-- Simply switch the label on the cluster kustomization.yaml `globalTenantResources/envs/dev/dev-cluster/kustomization.yaml` for green to be stable, or copy the updated policy to the `blue.yaml` under `globalTenantResources/base/network-policies/`
+- Simply switch the label on the cluster kustomization.yaml `globalTenantResources/envs/dev/dev-cluster/kustomization.yaml` for green to be stable (backout would be revering the patch for blue to be stable), or copy the updated policy to the `blue.yaml` under `globalTenantResources/base/network-policies/`
+- In this scenario it is important to keep blue and green config consistent after a change is rolled out.
 
 ## Resource Quota scoping
 Resource Quotas are scoped to tenant namespaces using the `quota` label in the subteam `patch.yaml` (patches the Tenant with quota label)
