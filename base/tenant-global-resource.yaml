@@ -6,7 +6,7 @@ metadata:
 spec:
   tenantSelector:
     matchLabels:
-      tenant: caas
+      global-resource: stable
   resyncPeriod: 60s
   resources:
     # Use namespacedItems to sync objects from a source ns to tenant ns

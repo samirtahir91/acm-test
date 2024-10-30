@@ -1,0 +1,16 @@
+apiVersion: capsule.clastix.io/v1beta2
+kind: Tenant
+metadata:
+  name: not-important
+spec:
+  namespaceOptions:
+    additionalMetadata:
+      annotations:
+        owner: foo@bar.com
+      labels:
+        tier-2: subteam-abc123
+        tier-1: team-1
+        cluster: dev-cluster
+        env: dev
+        quota: default
+        global-resource: stable

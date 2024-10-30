@@ -3,22 +3,17 @@ resources:
 
 patches:
 
+patches:
+- path: patch.yaml
+  target:
+    kind: Tenant
+
 - target:
     kind: Tenant
   patch: |-
     - op: replace
       path: /metadata/name
       value: tenant-abc123
-
-    # Labels
-    - op: replace
-      path: /spec/namespaceOptions/additionalMetadata/labels/tier-2
-      value: subteam-abc123
-
-    # Annotaions
-    - op: replace
-      path: /spec/namespaceOptions/additionalMetadata/annotations/owner
-      value: foo@bar.com
 
     # Rolebindings
     - op: add
