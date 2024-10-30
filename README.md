@@ -22,7 +22,7 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
         labelSelector: "colour=blue"
     ```
 
-Scenario: I want to test a new networkpolicy:
+Scenario: I want to test a new Network Policy:
 - I add the new policy into the current beta (`globalTenantResources/base/network-policies/green.yaml`), 
 - I update my tenant label for `global-resources` in my test subteam `patch.yaml` to `beta`
 - I commit and push the changes, let Capsule sync, and I can see my new networkpolicy in my test tenants namespace.
