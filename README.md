@@ -3,7 +3,22 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
 
 ## Background and add-ons to install:
 - [Config Sync](https://github.com/GoogleContainerTools/kpt-config-sync)
-- [Capsule](https://github.com/projectcapsule/capsule)
+  ```sh
+  # Set the release version
+  export CS_VERSION=v1.19.2
+  # Apply core Config Sync manifests to your cluster
+  kubectl apply -f "https://github.com/GoogleContainerTools/kpt-config-sync/releases/download/${CS_VERSION}/config-sync-manifest.yaml"
+  ```
+- [Capsule](https://github.com/projectcapsule/capsule) - Install with the capsuleUserGroups mapped to the Config Sync Namespace
+  ```sh
+  helm upgrade -i  \
+    capsule \
+    ./capsule/charts/capsule \
+    -n capsule-system \
+    --set manager.options.capsuleUserGroups.0="system:serviceaccounts:config-management-system" \
+    --set manager.options.forceTenantPrefix=false
+    --create-namespace \
+  ```
 
 ## Setup
 - Config Sync will act as the robot GitOps account, vending Tenants and Namespaces (1:1 relationship), and `GlobalTenantResources`
