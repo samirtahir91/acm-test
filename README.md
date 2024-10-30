@@ -17,7 +17,7 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
     -n capsule-system \
     --set manager.options.capsuleUserGroups.0="system:serviceaccounts:config-management-system" \
     --set manager.options.forceTenantPrefix=false
-    --create-namespace \
+    --create-namespace
   ```
 
 ## Setup
