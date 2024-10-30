@@ -1,0 +1,8 @@
+apiVersion: v1 # ignored
+kind: Not-Important # ignored
+metadata:
+  name: not-important # ignored
+spec:
+  tenantSelector:
+    matchLabels:
+      global-resource: stable

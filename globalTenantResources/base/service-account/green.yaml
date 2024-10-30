@@ -1,0 +1,24 @@
+# This can be synced in a seperate rootsync, i.e. with the capsule system itself
+apiVersion: capsule.clastix.io/v1beta2
+kind: GlobalTenantResource 
+metadata:
+  name: gts-caas-ksa-green
+  labels:
+    colour: green
+spec:
+  resyncPeriod: 60s
+  resources:
+    # Use namespacedItems to sync objects from a source ns to tenant ns
+    #- namespacedItems:
+    #    - apiVersion: v1
+    #      kind: ServiceAccount
+    #      namespace: capsule-system
+    #      selector: # select kinds in source ns matching labels
+    #        matchLabels:
+    #          tenant: caas
+    # Use rawItems to sync direct from this manifest to tenant namespaces
+    - rawItems:
+        - apiVersion: v1
+          kind: ServiceAccount
+          metadata:
+            name: ksa-caas

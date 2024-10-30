@@ -1,0 +1,13 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: namespaces
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
+  git:
+    repo: https://github.com/samirtahir91/acm-test
+    revision: "HEAD"
+    branch: "capsule"
+    dir: "./globalTenantResources/envs/dev/dev-cluster"
+    auth: none

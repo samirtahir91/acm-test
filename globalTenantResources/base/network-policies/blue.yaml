@@ -1,0 +1,21 @@
+# This can be synced in a seperate rootsync, i.e. with the capsule system itself
+---
+apiVersion: capsule.clastix.io/v1beta2
+kind: GlobalTenantResource 
+metadata:
+  name: gts-caas-netpol-blue
+  labels:
+    colour: blue
+spec:
+  resyncPeriod: 60s
+  resources:
+    - rawItems:
+        - apiVersion: networking.k8s.io/v1
+          kind: NetworkPolicy
+          metadata:
+            name: default-deny-all
+          spec:
+            podSelector: {}
+            policyTypes:
+            - Ingress
+            - Egress 

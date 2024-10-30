@@ -1,0 +1,16 @@
+resources:
+- ../../../base
+
+patches:
+
+# Patch the matching colour as the stable version
+- path: patch-stable.yaml
+  target:
+    kind: GlobalTenantResource
+    labelSelector: "colour=blue"
+
+# Patch the matching colour as the beta version
+- path: patch-beta.yaml
+  target:
+    kind: GlobalTenantResource
+    labelSelector: "colour=green"
