@@ -3,6 +3,7 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
 
 - Config Sync will act as the robot GitOps account, vending Tenants and Namespaces (1:1 relationship)
 - Capsule will sync GlobalTenantResources:
+    - All Tenants and Namespaces are handled by a `namespace` RootSync
     - All global resources are handled by a separate RootSync `global-tenant-resourcs`
         - This syncs Service Account, Network Policies and Resource Quotas, you can add more custom objects.
         - The global resources has been configured for a blue/green scenario:
