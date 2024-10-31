@@ -24,9 +24,9 @@ patches:
       value: mydomain.dev
 
     # Owner group cluster role
-    #- op: add
-    #  path: /spec/owners/0/clusterRoles/-
-    #  value: dev-cluster-maintainers
+    - op: add
+      path: /spec/owners/0/clusterRoles/-
+      value: dev-cluster-maintainers
 
     # Rolebindings
     - op: add
@@ -37,14 +37,6 @@ patches:
         - apiGroup: rbac.authorization.k8s.io
           kind: Group
           name: tenant-abc123-developers@mydomain.dev
-    - op: add
-      path: /spec/additionalRoleBindings/-
-      value:
-        clusterRoleName: dev-cluster-maintainers
-        subjects:
-        - apiGroup: rbac.authorization.k8s.io
-          kind: Group
-          name: tenant-abc123-maintainers@mydomain.dev
     - op: add
       path: /spec/additionalRoleBindings/-
       value:

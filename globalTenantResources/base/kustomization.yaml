@@ -1,6 +1,5 @@
 resources:
-#- tenant-global-resource-blue.yaml
-#- tenant-global-resource-green.yaml
 - ./resource-quotas
 - ./service-account
 - ./network-policies
+- ./cluster-roles

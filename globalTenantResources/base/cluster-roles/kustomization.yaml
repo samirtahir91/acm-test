@@ -1,0 +1,4 @@
+resources:
+- developer.yaml
+- maintainer.yaml
+- pim.yaml
