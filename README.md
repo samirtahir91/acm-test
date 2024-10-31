@@ -24,7 +24,7 @@ Config sync will sync the Tenants, each Tenant is owned by a maintainer group, t
 
 - Apply the RootSyncs:
   ```sh
-  kubectl apply -f namespace-rootsync.yaml
+  kubectl apply -f tenant-rootsync.yaml
   kubectl apply -f global-tenant-resourcs-rootsync.yaml
   ```
 
