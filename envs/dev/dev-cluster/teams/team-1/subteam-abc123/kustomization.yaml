@@ -48,8 +48,6 @@ patches:
           name: tenant-abc123-pim@mydomain.dev
 
     # ResourceQuota
-    # This can be moved to global tenant resources for acm vended namespaces - label tenant "quota=xxxx"
-    # - To map predefined quotas to tenants
     # If self-serve, custom fine graned values, better to patch like this at tenant level (aggregates combined ns usage):
     - op: add
       path: /spec/resourceQuotas
