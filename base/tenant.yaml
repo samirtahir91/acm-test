@@ -9,9 +9,8 @@ spec:
   - name: replace-me # can create namesapces (should be tenant maintainer group)
     kind: Group
     # If clusterRoles not specd, owners get cluster-admin on the tenant namespaces by default
-    clusterRoles:
+    clusterRoles: []
       # refined clusterrole patched in subteam kustomization.yaml
-      - capsule-namespace-deleter  # can delete namesapce owned by tenant
   namespaceOptions:
     forbiddenLabels:
       denied:
