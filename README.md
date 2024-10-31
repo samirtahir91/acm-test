@@ -11,14 +11,14 @@ Config sync will sync the Tenants, each Tenant is owned by a maintainer group, t
   # Apply core Config Sync manifests to your cluster
   kubectl apply -f "https://github.com/GoogleContainerTools/kpt-config-sync/releases/download/${CS_VERSION}/config-sync-manifest.yaml"
   ```
-- [Capsule](https://github.com/projectcapsule/capsule) - Install with the capsuleUserGroups mapped to the Config Sync Namespace
+- [Capsule](https://github.com/projectcapsule/capsule) - Install with the capsuleUserGroups mapped to your organisations group domain for RBAC, i.e. gke-security-groups@yourdomain.dev
   ```sh
   helm upgrade -i  \
     capsule \
     ./capsule/charts/capsule \
     -n capsule-system \
-    --set manager.options.capsuleUserGroups.0="system:serviceaccounts:config-management-system" \
-    --set manager.options.forceTenantPrefix=false \
+    --set manager.options.capsuleUserGroups.0="mydomain.dev" \
+    --set manager.options.forceTenantPrefix=true \
     --create-namespace
   ```
 
