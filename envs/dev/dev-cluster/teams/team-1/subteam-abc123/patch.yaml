@@ -28,11 +28,11 @@ spec:
         kind: Group
         name: tenant-abc123-pim@mydomain.dev
   resourceQuotas:
-    - scope: Tenant
-      items: 
-        - hard:
-            pods: "5"
-            requests.cpu: "2"
-            limits.cpu: "2"
-            requests.memory: "5Gi"
-            limits.memory: "5Gi"     
+    scope: Tenant
+    items: 
+    - hard:
+        pods: "5"
+        requests.cpu: "2"
+        limits.cpu: "2"
+        requests.memory: "5Gi"
+        limits.memory: "5Gi"     
