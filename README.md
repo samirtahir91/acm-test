@@ -40,7 +40,7 @@ Config sync will sync the Tenants, each Tenant is owned by a maintainer group, t
 - Role Bindings for custom access to namespaces are patched in the subteam `patch.yaml`
 - The sample files and layout can all be automated using scripts/apis/pipelines and hooked up to an IDP, essentially updating a git repo and for ConfigSync to mange Tenants, empowering team maintainers to manage their namespaces and Capsule to do the rest.
 - All global resources are handled by a separate `RootSync` `global-tenant-resourcs`
-    - This syncs Service Account and Network Policies, you can add more custom objects.
+    - This syncs Service Account and Network Policies to all matching Tenants (to all of their namesapces), you can add more custom objects.
     - The global resources have been configured for a blue/green scenario:
     - All Tenants are vended with the label `global-resources: stable`
     - Each subset of resources under `globalTenantResources/base/` has a blue and green copy, admins can test new global resources by patching the `global-resources` label for blue/green `GlobalTenantResources` to be stable/beta in the cluster folder `kustomization.yaml`. i.e. `globalTenantResources/envs/dev/dev-cluster/kustomization.yaml`
