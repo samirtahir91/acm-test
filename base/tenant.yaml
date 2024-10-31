@@ -18,10 +18,3 @@ spec:
           - foo.acme.net
       deniedRegex: .*.acme.net
   additionalRoleBindings: []
-  # these are moved to a glolbal tenant resource
-  #networkPolicies:
-  #  items:
-  #  - policyTypes:
-  #    - Ingress
-  #    - Egress
-  #    podSelector: {}
