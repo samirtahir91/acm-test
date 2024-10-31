@@ -60,6 +60,10 @@ Config sync will sync the Tenants, each Tenant is owned by a maintainer group, t
         labelSelector: "colour=blue"
     ```
 
+### Resource Quota scoping
+Resource Quotas are scoped to `Tenant` level in the `Tenant` spec, patched in the subteams `kustomization.yaml`. All `Namespaces` created in the Tenant will inherit the same Resource Quota, Capsule aggregates the combined usage of all `Namespaces` and enforces the quota accross all the namespaces matching the `Tenant`.
+
+
 ## Scenario: I want to test a new Network Policy:
 - Add the new policy into the current beta (`globalTenantResources/base/network-policies/green.yaml`), 
 - Update the tenant label for `global-resources` in a test subteam `patch.yaml` to `beta`
@@ -68,5 +72,3 @@ Config sync will sync the Tenants, each Tenant is owned by a maintainer group, t
 - Simply switch the label on the cluster kustomization.yaml `globalTenantResources/envs/dev/dev-cluster/kustomization.yaml` for green to be stable (backout would be revering the patch for blue to be stable), or copy the updated policy to the `blue.yaml` under `globalTenantResources/base/network-policies/`
 - In this scenario it is important to keep blue and green config consistent after a change is rolled out.
 
-## Resource Quota scoping
-Resource Quotas are scoped to `Tenant` level in the `Tenant` spec, patched in the subteams `kustomization.yaml`. All `Namespaces` created in the Tenant will inherit the same Resource Quota, Capsule aggregates the combined usage of all `Namespaces` and enforces the quota accross all the namespaces matching the `Tenant`.
