@@ -22,7 +22,7 @@ Config sync will sync the Tenants, each Tenant is owned by a maintainer group, t
     --create-namespace
   ```
   - For testing in local clusters i.e. minikube, you can use the [hack script](https://github.com/projectcapsule/capsule/blob/main/hack/create-user.sh) to create a user mapping to a tenant and org group. 
-  - i.e. `./create-user.sh samir tenant-abc123 mydomain.dev` and act as the user to create namespaces in the Tenant - `export KUBECONFIG=samir-tenant-abc123.kubeconfig`
+  - i.e. In a separate terminal (after applying set-up RootSyncs below), `./create-user.sh samir tenant-abc123 mydomain.dev` and act as the user to create namespaces in the Tenant - `export KUBECONFIG=samir-tenant-abc123.kubeconfig`
 
 - Apply the RootSyncs:
   ```sh
