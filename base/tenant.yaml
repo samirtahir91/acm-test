@@ -8,9 +8,9 @@ spec:
   owners:
   - name: replace-me # can create namesapces (should be tenant maintainer group)
     kind: Group
-    clusterRoles:
-      - view  # can only view in namespace - for local test, use custom cluster role for enterprise
-      - capsule-namespace-deleter  # can delete namesapce owned by tenant
+    #clusterRoles:
+    #  - view  # can only view in namespace - for local test, use custom cluster role for enterprise
+    #  - capsule-namespace-deleter  # can delete namesapce owned by tenant
   namespaceOptions:
     forbiddenLabels:
       denied:

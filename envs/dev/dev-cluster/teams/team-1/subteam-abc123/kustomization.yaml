@@ -24,9 +24,9 @@ patches:
       value: mydomain.dev
 
     # Owner group cluster role
-    - op: add
-      path: /spec/owners/0/clusterRoles/-
-      value: dev-cluster-maintainers
+    #- op: add
+    #  path: /spec/owners/0/clusterRoles/-
+    #  value: dev-cluster-maintainers
 
     # Rolebindings
     - op: add
@@ -55,9 +55,9 @@ patches:
           name: tenant-abc123-pim@mydomain.dev
 
     # ResourceQuota
-    # This is moved to global tenant resources - label tenant "quota=xxxx"
+    # This can be moved to global tenant resources for acm vended namespaces - label tenant "quota=xxxx"
     # - To map predefined quotas to tenants
-    # If custom fine graned values, better to patch like this:
+    # If self-serve, custom fine graned values, better to patch like this at tenant level (aggregates combined ns usage):
     - op: add
       path: /spec/resourceQuotas
       value:
