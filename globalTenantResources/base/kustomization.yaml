@@ -1,5 +1,4 @@
 resources:
-- ./resource-quotas
 - ./service-account
 - ./network-policies
 - ./cluster-roles

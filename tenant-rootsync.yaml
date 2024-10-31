@@ -1,7 +1,7 @@
 apiVersion: configsync.gke.io/v1beta1
 kind: RootSync
 metadata:
-  name: namespaces
+  name: tenants
   namespace: config-management-system
 spec:
   sourceFormat: unstructured

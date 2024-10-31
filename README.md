@@ -1,5 +1,7 @@
-# Multi-tenancy with Config Sync and Capsule
-This repo is a example of how to setup multitenancy namespace provisioning with Config Sync and Capsule
+# Multi-tenancy with Config Sync, Capsule and Self Service
+This repo is a example of how to setup multitenancy namespace provisioning with Config Sync and Capsule, with self service of creating namespaces
+
+Config sync will sync the Tenants, each Tenant is owned by a maintainer group, the maintainers will have permissions to create and delete namespaces as well as custom access defined in their cluster role (view on most things in this set-up)
 
 ## Background and add-ons to install:
 - [Config Sync](https://github.com/GoogleContainerTools/kpt-config-sync)
@@ -27,14 +29,16 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
   ```
 
 ## Setup
-- Config Sync will act as the robot GitOps account, vending Tenants and Namespaces (1:1 relationship), and `GlobalTenantResources`
-- All `Tenants` and `Namespaces` are handled by a `namespace` `RootSync`
-- Each `Tenant` is owned by the `Config Sync` `namespace` `RootSync`
+- Config Sync will act as the robot GitOps account, vending `Tenants`, and `GlobalTenantResources`
+- All `Tenants` are handled by a `tenant` `RootSync`
+- Each `Tenant` is owned by a Maintainer Group (i.e. a subgroup in your orgs security group used for RBAC)
+- Users in a `Tenants` maintainer group can create/delete namespaces, automatically scoped to the `Tenant` - Cluster Roles are synced and refined for maintainers (in this setup, maintainer can create/delete namespaces for their Tenant, and only view objects in their namespace)
+- A maintainer group can own more than 1 Tenant, Capsule scopes the Namespaces to a Tenant on create by enforcing a tenant prefix in the Namespace name (uses a Validating Webhook).
 - Capsule takes care of the rest - syncing `GlobalTenantResources` that match labels on `Tenant` objects, eliminating the overhead on Config Sync to reconcile all the Namespaced objects.
 - Role Bindings for custom access to namespaces are patched in the subteam `patch.yaml`
 - The sample files and layout can all be automated using scripts/apis/pipelines and hooked up to an IDP, essentially updating a git repo and letting ConfigSync and Capsule do the rest.
 - All global resources are handled by a separate `RootSync` `global-tenant-resourcs`
-    - This syncs Service Account, Network Policies and Resource Quotas, you can add more custom objects.
+    - This syncs Service Account and Network Policies, you can add more custom objects.
     - The global resources have been configured for a blue/green scenario:
     - All Tenants are vended with the label `global-resources: stable`
     - Each subset of resources under `globalTenantResources/base/` has a blue and green copy, admins can test new global resources by patching the `global-resources` label for blue/green `GlobalTenantResources` to be stable/beta in the cluster folder `kustomization.yaml`. i.e. `globalTenantResources/envs/dev/dev-cluster/kustomization.yaml`
@@ -61,11 +65,4 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
 - In this scenario it is important to keep blue and green config consistent after a change is rolled out.
 
 ## Resource Quota scoping
-Resource Quotas are scoped to tenant namespaces using the `quota` label in the subteam `patch.yaml` (patches the Tenant with quota label)
-
-The ResourceQuotas are maintained in `globalTenantResources/base/resource-quotas`, each having the tenantSelector to match Tenants for scoping, i.e.
-```yaml
-  tenantSelector:
-    matchLabels:
-      quota: low
-```
+Resource Quotas are scoped to `Tenant` level in the `Tenant` spec, patched in the subteams `kustomization.yaml`. All `Namespaces` created in the Tenant will inherit the same Resource Quota, Capsule aggregates the combined usage of all `Namespaces` and enforces the quota accross all the namespaces matching the `Tenant`.

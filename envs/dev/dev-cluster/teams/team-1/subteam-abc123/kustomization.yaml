@@ -24,11 +24,12 @@ patches:
       value: mydomain.dev
 
     # Owner group cluster role
+    # Add your maintainer group (i.e. with ns delete permission in cluster role)
     - op: add
       path: /spec/owners/0/clusterRoles/-
       value: dev-cluster-maintainers
 
-    # Rolebindings
+    # Rolebindings - add less priveleged group bindings
     - op: add
       path: /spec/additionalRoleBindings/-
       value:
