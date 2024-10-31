@@ -1,17 +1,11 @@
 resources:
 - ../../../../../../base
 
-patches:
+# Append team ID to tenant name
+nameSuffix: abc123
 
 # Patch Tenant spec
+patches:
 - path: patch.yaml
   target:
     kind: Tenant
-
-# Patch tenant name
-- target:
-    kind: Tenant
-  patch: |-
-    - op: replace
-      path: /metadata/name
-      value: tenant-abc123

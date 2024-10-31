@@ -1,7 +1,7 @@
 apiVersion: capsule.clastix.io/v1beta2
 kind: Tenant
 metadata:
-  name: replace-me
+  name: tenant-
   labels:
     tenant: caas
 spec:
