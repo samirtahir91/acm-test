@@ -39,6 +39,8 @@ Config sync will sync the Tenants, each Tenant is owned by a maintainer group, t
 - Capsule takes care of the rest - syncing `GlobalTenantResources` that match labels on `Tenant` objects, eliminating the overhead on Config Sync to reconcile all the Namespaced objects.
 - Role Bindings for custom access to namespaces are patched in the subteam `patch.yaml`
 - The sample files and layout can all be automated using scripts/apis/pipelines and hooked up to an IDP, essentially updating a git repo and for ConfigSync to mange Tenants, empowering team maintainers to manage their namespaces and Capsule to do the rest.
+
+### Global Namespace Resources
 - All global resources are handled by a separate `RootSync` `global-tenant-resourcs`
     - This syncs Service Account and Network Policies to all matching Tenants (to all of their namesapces), you can add more custom objects.
     - The global resources have been configured for a blue/green scenario:
