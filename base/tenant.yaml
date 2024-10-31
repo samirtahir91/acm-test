@@ -12,6 +12,7 @@ spec:
     clusterRoles: []
       # refined clusterrole patched in subteam kustomization.yaml
   namespaceOptions:
+    #quota: 100 # Optionally limit no. of namespaces allowed for the Tenant
     forbiddenLabels:
       denied:
           - foo.acme.net
