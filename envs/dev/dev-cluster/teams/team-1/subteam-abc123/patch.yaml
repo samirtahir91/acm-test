@@ -3,19 +3,27 @@ kind: Not-Important # ignored
 metadata:
   name: not-importnant # ignored
   annotations:
-    owner: foo@bar.com
+    owner: mydomain.dev
   labels:
     tier-2: subteam-abc123
     tier-1: team-1
     cluster: dev-cluster
     env: dev
-    global-resource: stable
 spec:
   owners:
   - name: mydomain.dev
     kind: Group
     clusterRoles:
       - dev-cluster-maintainers
+  namespaceOptions:
+    additionalMetadata:
+      annotations:
+        owner: mydomain.dev
+      labels:
+        tier-2: subteam-abc123
+        tier-1: team-1
+        cluster: dev-cluster
+        env: dev
   additionalRoleBindings:
     - clusterRoleName: dev-cluster-developers
       subjects:

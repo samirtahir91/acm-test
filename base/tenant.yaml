@@ -3,9 +3,9 @@ kind: Tenant
 metadata:
   name: tenant-
   labels:
-    tenant: caas
+    global-resource: stable
 spec:
-  namespaceOptions:
+  namespaceOptions: 
     #quota: 100 # Optionally limit no. of namespaces allowed for the Tenant
     forbiddenLabels:
       denied:
