@@ -9,5 +9,30 @@ metadata:
     tier-1: team-1
     cluster: dev-cluster
     env: dev
-    #quota: med # Handled at tenant level for self serve using aggregate
     global-resource: stable
+spec:
+  owners:
+  - name: mydomain.dev
+    kind: Group
+    clusterRoles:
+      - dev-cluster-maintainers
+  additionalRoleBindings:
+    - clusterRoleName: dev-cluster-developers
+      subjects:
+      - apiGroup: rbac.authorization.k8s.io
+        kind: Group
+        name: tenant-abc123-developers@mydomain.dev
+    - clusterRoleName: dev-cluster-pim
+      subjects:
+      - apiGroup: rbac.authorization.k8s.io
+        kind: Group
+        name: tenant-abc123-pim@mydomain.dev
+  resourceQuotas:
+    - scope: Tenant
+      items: 
+        - hard:
+            pods: "5"
+            requests.cpu: "2"
+            limits.cpu: "2"
+            requests.memory: "5Gi"
+            limits.memory: "5Gi"     

@@ -5,16 +5,9 @@ metadata:
   labels:
     tenant: caas
 spec:
-  owners:
-  - name: replace-me # can create namesapces (should be tenant maintainer group)
-    kind: Group
-    # If clusterRoles not specd, owners get cluster-admin on the tenant namespaces by default
-    clusterRoles: []
-      # refined clusterrole patched in subteam kustomization.yaml
   namespaceOptions:
     #quota: 100 # Optionally limit no. of namespaces allowed for the Tenant
     forbiddenLabels:
       denied:
           - foo.acme.net
       deniedRegex: .*.acme.net
-  additionalRoleBindings: []

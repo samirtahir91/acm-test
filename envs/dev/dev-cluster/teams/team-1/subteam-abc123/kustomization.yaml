@@ -3,60 +3,15 @@ resources:
 
 patches:
 
-# Patch global labels and annotations
+# Patch Tenant spec
 - path: patch.yaml
   target:
     kind: Tenant
 
-# Patch tenant
+# Patch tenant name
 - target:
     kind: Tenant
   patch: |-
     - op: replace
       path: /metadata/name
       value: tenant-abc123
-
-    # Owner group
-    - op: replace
-      path: /spec/owners/0/name
-      # For testing use top level group, for enterprise use sub groups (i.e. with google groups)
-      #value: tenant-abc123-maintainers@mydomain.dev
-      value: mydomain.dev
-
-    # Owner group cluster role
-    # Add your maintainer group (i.e. with ns delete permission in cluster role)
-    - op: add
-      path: /spec/owners/0/clusterRoles/-
-      value: dev-cluster-maintainers
-
-    # Rolebindings - add less priveleged group bindings
-    - op: add
-      path: /spec/additionalRoleBindings/-
-      value:
-        clusterRoleName: dev-cluster-developers
-        subjects:
-        - apiGroup: rbac.authorization.k8s.io
-          kind: Group
-          name: tenant-abc123-developers@mydomain.dev
-    - op: add
-      path: /spec/additionalRoleBindings/-
-      value:
-        clusterRoleName: dev-cluster-pim
-        subjects:
-        - apiGroup: rbac.authorization.k8s.io
-          kind: Group
-          name: tenant-abc123-pim@mydomain.dev
-
-    # ResourceQuota
-    # If self-serve, custom fine graned values, better to patch like this at tenant level (aggregates combined ns usage):
-    - op: add
-      path: /spec/resourceQuotas
-      value:
-        scope: Tenant
-        items: 
-          - hard:
-              pods: "5"
-              requests.cpu: "2"
-              limits.cpu: "2"
-              requests.memory: "5Gi"
-              limits.memory: "5Gi"     
