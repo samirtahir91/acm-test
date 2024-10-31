@@ -4,7 +4,7 @@ This repo is a example of how to setup multitenancy namespace provisioning with 
 Config sync will sync the Tenants, each Tenant is owned by a maintainer group, the maintainers will have permissions to create and delete namespaces as well as custom access defined in their cluster role (view on most things in this set-up)
 
 ## Motivation
-You're a Kubernetes admin with large multi-tenant clusters consumed by many Teams, wanting to simplify stnadard configurations, permissions, resource quotas and the whole 'noisy neighbour' issues along with shared clusters. Your developers want some level of self service on their namespaces, you don;t want to provision namespaces on demand and you dont need to care about the what they deploy so much, just that each bnamespace adheres to the restrictions you control.
+You're a Kubernetes admin with large multi-tenant clusters consumed by many Teams, wanting to simplify standard configurations, permissions, resource quotas and the whole 'noisy neighbour' issues along with shared clusters. Your developers want some level of self service on their namespaces, you don;t want to provision namespaces on demand and you dont need to care about the what they deploy so much, just that each bnamespace adheres to the restrictions you control.
 
 ## Background and add-ons to install:
 - [Config Sync](https://github.com/GoogleContainerTools/kpt-config-sync)
