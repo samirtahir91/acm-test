@@ -41,7 +41,7 @@ You're a Kubernetes admin with large multi-tenant clusters consumed by many Team
 - A maintainer group can own more than 1 Tenant, Capsule scopes the Namespaces to a Tenant on create by enforcing a tenant prefix in the Namespace name (uses a Validating Webhook).
 - Capsule takes care of the rest - syncing `GlobalTenantResources` that match labels on `Tenant` objects, eliminating the overhead on Config Sync to reconcile all the Namespaced objects.
 - Role Bindings for custom access to namespaces are patched in the subteam `patch.yaml`
-- The sample files and layout can all be automated using scripts/apis/pipelines and hooked up to an IDP, essentially updating a git repo and for ConfigSync to mange Tenants, empowering team maintainers to create/delete their namespaces and Capsule to do the rest. 
+- The sample files and layout can all be automated using scripts/apis/pipelines and hooked up to an IDP, essentially updating a git repo and for ConfigSync to mange Tenants, empowering team maintainers to create/delete their namespaces and Capsule to do the rest.
 - If desired you can limit the no. of Namespaces allowed per Tenant using `Tenant.spec.namespaceOptions.quota`
 
 ### Global Namespace Resources
